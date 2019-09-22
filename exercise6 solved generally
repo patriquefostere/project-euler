@@ -1,0 +1,42 @@
+using System;
+
+/* Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.*/
+
+public class exercise6
+{
+	public static void Main()
+	{
+		long lowerNum = 1;
+		long upperNum = 100;
+		calculators calc = new calculators();
+		long result = calc.squareSum(lowerNum, upperNum) - calc.sumSquare(lowerNum, upperNum);
+		Console.WriteLine("The difference between the square of the sum and the sum of the squares from "
+						  +lowerNum+" to "+ upperNum+" is "+ result+".");
+	}
+}
+class calculators{
+	public long sumSquare(long num1, long num2){
+		//calculates the sum of the squares of all integers between (inclusive) num1 and num2 
+		//do something about negative numbers
+		long sum1 =0;
+		for(long i =num1;i<num2+1;i++){
+			sum1+=(long) Math.Pow(i,2);
+		}
+		Console.WriteLine(sum1);
+		return sum1;
+	}
+	public long squareSum(long num1, long num2){
+		//calculates the square of the sum of all integers between (inclusive) num1 and num2
+		//do something about negative numbers
+		long sum2 =0;
+		for(long i =num1;i<num2+1;i++){
+			sum2+=i;
+		}
+		Console.WriteLine(Math.Pow(sum2,2));
+		return (long) Math.Pow(sum2,2);
+	}
+}
+
+
+
+
