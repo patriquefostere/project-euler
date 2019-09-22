@@ -1,0 +1,44 @@
+using System;
+
+// What is the largest prime factor of 600851475143?
+
+public class exercise3
+{
+	public static void Main()
+	{
+		long largest = 0;
+		primeChecker pc1  = new primeChecker();
+		//we divide 600851475143 by all primes up to sqrt(600851475143)=l
+		
+		for(long i =2;i<Math.Sqrt(600851475143);i++){
+			//first check if i is prime
+			
+			if(pc1.isPrime(i)){
+				//i is prime so check if i divides 600851475143
+				
+				if(600851475143%i==0){
+					largest =i;
+				}
+			}
+		}
+		Console.Write(largest);
+	}
+	
+}
+class primeChecker{
+	public bool isPrime(long number){
+		//returns true if number is prime
+		bool yn=true;
+		for(long i =2;i<Math.Sqrt(number);i++){
+			if(number%i==0){
+				// i divides number, hence number not prime
+				yn =false;
+			}
+		}
+		return yn;	
+	}
+}
+
+
+
+
