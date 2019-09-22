@@ -1,0 +1,82 @@
+using System;
+
+/* 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?*/
+
+public class exercise5
+{
+	public static void Main()
+	{
+		//we calculate the product 1*2*...*19*20 and work our way downwards 
+		//by dividing by the greatest common divisor of each pair of integers 2,3,...,20
+		long prod=1;
+		for(int i =2;i<21;i++){
+			prod *=i;
+			//calculates the product 1*2*...*19*20 
+		}//fine
+		
+		long lcm = prod;
+		calculators calc = new calculators();
+		
+		//now divide lcm by gcd(a,b) where a and b run through 2,3,...,20
+		for(int i = 2; i<21; i++){
+			for(int j = 2; j<21; j++){
+				if(lcm%calc.gcd(i,j)==0){
+					//then gcd(i,j) divides lcm hence lcm is not minimal
+					lcm = lcm/calc.gcd(i,j);
+				}
+			}
+		}
+		Console.Write("The lowest common multiple of 1,2,3,...,20 is "+lcm+" .");
+	}
+	
+}
+class calculators{
+	public long gcd(long number1, long number2){
+		//calculates the greatest common divisor of two numbers using the Euclidean algorithm
+		
+		long a = number1;
+		long b = number2;
+		long c;
+		long gcd = 1;
+
+		//calculation is slightly more straightforward if a>b
+		if(a<b){
+			c = a;
+			a = b;
+			b = c;
+			//now a>b
+		}
+		
+		
+		//first find the largest natural number k such that: a = k*b + remainder
+		//if remainder r!=0, then set a = b, b = rem and calculate new remainder
+		//repeat until remainder is 0
+		
+		
+		
+		bool remIsZero = false;
+		
+		while(remIsZero==false){
+			//find the largest natural number k such that: a = k*b + r
+			//0 =< r <= b-1
+			decimal div = a/b;
+			long k=Convert.ToInt64(Math.Floor(div));//this gives the largest such k
+			long r = a-k*b;
+			
+			if(r==0){
+				gcd = b;
+				remIsZero = true;
+			}else{
+				a = b;
+				b = r;
+			}
+		}
+		return gcd;
+	}
+}
+
+
+
+
