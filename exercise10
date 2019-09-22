@@ -1,0 +1,39 @@
+using System;
+
+// Find the sum of all the primes below a million.
+
+public class exercise10
+{
+	public static void Main()
+	{
+		exercise10 e10 = new exercise10();
+		long sum =0;
+		for(int i =1;i<1000000;i++){
+			//hopefully so i don't get: 'Fatal Error: Execution time limit was exceeded'
+			if(i%2!=0 && i%3!=0){
+				if(e10.isPrime(i)){
+					sum+=i;
+				}
+			}
+		}
+		sum=sum+5;
+		Console.Write(sum);
+		
+	}
+	public bool isPrime(long number){
+		//returns true if number is prime
+		bool yn=true;
+		for(long i =2;i<Math.Sqrt(number);i++){
+			if(number%i==0){
+				// i divides number, hence number not prime
+				yn =false;
+			}
+		}
+		return yn;	
+	}
+}
+
+
+
+
+
