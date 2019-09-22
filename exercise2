@@ -1,0 +1,26 @@
+using System;
+
+/*By considering the terms in the Fibonacci sequence whose values do not exceed four million, 
+find the sum of the even-valued terms.*/
+
+public class Program
+{
+	public static void Main()
+	{
+		long counter = 1;
+		long sum = 0;
+		long n1=1;
+		long n2=1;
+		while(counter<4000000){
+			long n3 = n1+n2;
+			if(n3%2==0){
+				sum+=n3;
+			}
+			n1=n2;
+			n2=n3;
+			counter = n3;
+		}
+		Console.Write(sum);
+	}
+}
+
