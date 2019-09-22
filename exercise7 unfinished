@@ -1,0 +1,43 @@
+using System;
+
+//What is the 10 001st prime number?
+
+public class exercise7
+{
+	public static void Main()
+	{
+		int counter = 0;
+		int limit = 3;
+		long numberToCheck = 1;
+		long bigPrime=2;
+		primeChecker pc = new primeChecker();
+		while(counter<=limit){
+			if(pc.isPrime(numberToCheck)){
+				counter++;
+				if(counter==limit-1){
+					bigPrime = numberToCheck;
+				}
+			}
+			numberToCheck++;
+		}
+		
+		Console.WriteLine("The 3rd prime number is "+bigPrime +".");
+	}
+}
+class primeChecker{
+	public bool isPrime(long number){
+		//returns true if number is prime
+		bool yn=true;
+		for(long i =2;i<Math.Sqrt(number);i++){
+			if(number%i==0){
+				// i divides number, hence number not prime
+				yn =false;
+			}
+		}
+		return yn;	
+	}
+}
+
+
+
+
